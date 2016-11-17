@@ -1,0 +1,38 @@
+body
+{
+  background-color: #7c90af;
+} 
+
+.dv_main
+{
+  margin-left: 20%;
+  margin-right: 20%;
+  background-color: #6e7b91;
+}
+
+.dv_navbar
+{
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  width: 100%;
+  height: 50px;
+  background-color: white;
+
+  text-align: left;
+  font-size: 30px;
+  font-family: "Lucida";
+  font-color: black;
+}
+
+.dv_navbar_cont
+{
+  font-size: 10px;
+}
+
+.dv_results
+{
+  align: left;
+  margin-left: 10%;
+}
