@@ -26,11 +26,13 @@
     <div class="dv_main"> 
     	<!-- NAV BAR -->
     	<div class="dv_navbar">
-    		<div class="dv_navbar_cont">
-	    		SIMPLE_BLOG
+			<div class="dv_navbar_title">
+				<span>SIMPLE_BLOG</span>
+			</div>
+			<div class="dv_navbar_links">
 				<a href=simple_blog_index.php>  Home  </a> 
 				<a href=simple_blog_new_post.php target="_blank">  Create a new post  </a><br><br>				
-    		</div>
+			</div>
 		</div>
 
 		<div class="dv_results">
