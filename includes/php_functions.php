@@ -1,30 +1,34 @@
 <!-- Javascript scripts -->
 <script type="text/Javascript" src="javascript_functions.js"></script>
-<script src="includes\JQuery 3.1.1"></script>
+<script src="includes\JQuery_3.1.js"></script>
 
 <?php
    	function showPosts($conn, $sql, $btn)
    	{
 		foreach ($conn->query($sql) as $row){
-			echo "<div id=post". $row['postIndex'] .">";
-    		echo $row['postTitle'] . "<br>";
-    		echo $row['postContent'] . "<br><br>";
-    		echo "Posted on " . $row['postDate'] . "   ";
-    		echo " by " . $row['postAuthor'] . "<br><br>";
+			echo "<div name='dv_post' id=dv_post". $row['postIndex'] .">";
+    		echo "<p>". $row['postTitle'] . "</p><br>";
+    		echo "<p>". $row['postContent'] . "</p><br><br>";
+    		echo "<p>Posted on " . $row['postDate'] . "   ";
+    		echo "<p> by " . $row['postAuthor'] . "</p><br><br>";
 
     		if($btn)
 			{
 				//BUTTON
 	        	echo "<input type='button' value='Comment' name='btn_comment' onclick='addCommentary(". $row['postIndex'] .")'><br><br>";
+	        	echo "<form method='POST'>";
+	        	echo "<input type='submit' value='Show comments' name=btn_show_comment". $row['postIndex'] .">";
+	        	echo "</form><br><br>";
 
 	        	//COMMENTS
-	        	echo "<div name=comment id=div_comment". $row['postIndex'] .">";
-	        	$sql = "SELECT * FROM table_comments WHERE commentPostIndex = ". $row['postIndex'];
-	        	showComments($conn, $sql);
-	        	echo "</div>";
-	        	echo "<input type='button' value='Show comments' onclick='moreComments(". $row['postIndex'] .")'>";
+	        	if(isset($_POST['btn_show_comment'. $row['postIndex']]))
+	        	{
+		        	echo "<div name=dv_commentaries id=dv_comment". $row['postIndex'] .">";
+		        	$sql = "SELECT * FROM table_comments WHERE commentPostIndex = ". $row['postIndex'];
+		        	showComments($conn, $sql);
+		        	echo "</div>";
+	        	}
 			}
-
     		echo "</div>";
 		}
 
@@ -34,7 +38,7 @@
    	function showComments($conn, $sql)
    	{
 		foreach ($conn->query($sql) as $row){
-			echo "<div id=comment". $row['commentIndex'] .">";
+			echo "<div>";
 			echo $row['commentText'] . "<br>";
 			echo "Posted on " . $row['commentDate'] . "   ";
 			echo " by " . $row['commentAuthor'] . "<br><br>";

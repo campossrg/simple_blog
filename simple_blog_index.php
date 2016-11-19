@@ -15,7 +15,7 @@
 
 <!-- Javascript scripts -->
 <script type="text/Javascript" src="includes\javascript_functions.js"></script>
-<script src="includes\JQuery 3.1.1"></script>
+<script src="includes\JQuery_3.1.js"></script>
 
 <html>
 <head>
