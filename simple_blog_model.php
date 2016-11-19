@@ -1,6 +1,5 @@
 <!-- Javascript scripts -->
-<script type="text/Javascript" src="javascript_functions.js"></script>
-<script src="includes\JQuery_3.1.js"></script>
+<script type="text/Javascript" src="includes\javascript_functions.js"></script>
 
 <?php
    	function showPosts($conn, $sql, $btn)

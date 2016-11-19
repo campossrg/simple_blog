@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 
 <!-- Javascript scripts -->
-<script type="text/Javascript" src="includes\javascript_functions.js.js"></script>
+<script type="text/Javascript" src="..\includes\javascript_functions.js"></script>
 
 <!-- INCLUDES -->
 <?php
 	//START THE SESSION TO KEEP INDEX VARIABLE
 	session_start(); 
 
-	include "includes\connection.php";
-	include "includes\php_functions.php";
+	include "..\includes\connection.php";
+	include "..\simple_blog_model.php";
 ?>
 
 <html>
 <head>
 	<title>SIMPLE BLOG - NEW COMMENTARY</title>
-	<link rel="stylesheet" type="text/css" href="includes\style.css">
+	<link rel="stylesheet" type="text/css" href="..\includes\style.css">
 </head>
 <body>
 	<div class="dv_main"> 
