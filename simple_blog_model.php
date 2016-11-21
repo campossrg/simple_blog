@@ -6,10 +6,10 @@
    	{
 		foreach ($conn->query($sql) as $row){
 			echo "<div name='dv_post' id=dv_post". $row['postIndex'] .">";
-    		echo "<p>". $row['postTitle'] . "</p><br>";
+    		echo "<h1>". $row['postTitle'] . "</h1><br>";
     		echo "<p>". $row['postContent'] . "</p><br><br>";
     		echo "<p>Posted on " . $row['postDate'] . "   ";
-    		echo "<p> by " . $row['postAuthor'] . "</p><br><br>";
+    		echo "<p> by " . $row['postAuthor'] . "</p><br>";
 
     		if($btn)
 			{
@@ -37,7 +37,7 @@
    	function showComments($conn, $sql)
    	{
 		foreach ($conn->query($sql) as $row){
-			echo "<div>";
+			echo "<div class='dv_commentaries_each'>";
 			echo $row['commentText'] . "<br>";
 			echo "Posted on " . $row['commentDate'] . "   ";
 			echo " by " . $row['commentAuthor'] . "<br><br>";
