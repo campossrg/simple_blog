@@ -1,32 +1,46 @@
-<!-- Javascript scripts -->
-<script type="text/Javascript" src="includes\javascript_functions.js"></script>
-
 <?php
    	function showPosts($conn, $sql, $btn)
    	{
 		foreach ($conn->query($sql) as $row){
 			echo "<div name='dv_post' id=dv_post". $row['postIndex'] .">";
-    		echo "<h1>". $row['postTitle'] . "</h1><br>";
+    		echo "<h1>". $row['postTitle'] . "<br><i><small> Posted on ". $row['postDate'] ." by ". $row['postAuthor'] ."</small></i></h1><br>";
     		echo "<p>". $row['postContent'] . "</p><br><br>";
-    		echo "<p>Posted on " . $row['postDate'] . "   ";
-    		echo "<p> by " . $row['postAuthor'] . "</p><br>";
 
     		if($btn)
 			{
-				//BUTTON
-	        	echo "<input type='button' value='Comment' name='btn_comment' onclick='addCommentary(". $row['postIndex'] .")'><br><br>";
-	        	echo "<form method='POST'>";
-	        	echo "<input type='submit' value='Show comments' name=btn_show_comment". $row['postIndex'] .">";
-	        	echo "</form><br><br>";
+				//button show comments
+	        	echo "<input type='submit' class='btn btn-primary' value='Show comments' onclick='showComments(". $row['postIndex'] .")')>";
 
-	        	//COMMENTS
-	        	if(isset($_POST['btn_show_comment'. $row['postIndex']]))
-	        	{
+	        	//commentaries
+	        	//if(isset($_POST['btn_show_comment'. $row['postIndex']]))
+	        	//{
 		        	echo "<div name=dv_commentaries id=dv_comment". $row['postIndex'] .">";
 		        	$sql = "SELECT * FROM table_comments WHERE commentPostIndex = ". $row['postIndex'];
 		        	showComments($conn, $sql);
+
+					//commentaries form
+		        	echo "<form action='simple_blog_index.php' method='POST'><br>";
+		        	echo "<div class='form-group'>";
+					echo "<h3><i>Add new commentary</i></h3>";
+					echo "<label for='Content'>Content</label>";
+		    		echo "<textarea class='form-control' name='txt_comment' cols='30' rows='5' placeholder='Insert text here...'></textarea>";
+	  				echo "</div>";
+	  				echo "<div class='form-group'>";
+					echo "<label for='Author'>Author</label>";
+					echo "<input type='text' class='form-control' name='txt_comment_author' placeholder='Enter Author'>";
+					echo "</div>";	
+	  				echo "<button type='submit' class='btn btn-primary' name='btn_comment_submit'>Submit</button>";
+	  				echo "</form>";
 		        	echo "</div>";
-	        	}
+	        	//}
+
+	        	if(isset($_POST['btn_comment_submit'])) 
+				{
+					$table = array("table_comments", "commentPostIndex", "commentText", "commentAuthor"); 
+					$txt = array($row['postIndex'], $_POST['txt_comment'], $_POST['txt_comment_author']);
+
+					insertNew($table, $txt, $conn);
+				}
 			}
     		echo "</div>";
 		}
@@ -37,10 +51,13 @@
    	function showComments($conn, $sql)
    	{
 		foreach ($conn->query($sql) as $row){
-			echo "<div class='dv_commentaries_each'>";
+			echo "<div class='media'>";
+			echo "<div class='media-left'>";
+			echo "<img src='http://www.w3schools.com/bootstrap/img_avatar2.png' class='media-object' style='width:60px'>";
+			echo "</div>";
+			echo "<div class='media-body'>";
+			echo "<h2>". $row['commentAuthor'] ."<br><small><i> posted on ". $row['commentDate'] . "</i></small></h2><br>";
 			echo $row['commentText'] . "<br>";
-			echo "Posted on " . $row['commentDate'] . "   ";
-			echo " by " . $row['commentAuthor'] . "<br><br>";
 			echo "</div>";
 		}
    	}
@@ -91,8 +108,7 @@
 				));
 
 				//CLOSE
-				echo "Data submited! Closing...";
-				echo "<script>setTimeout('window.close();', 1500);</script>";
+				echo "Data submited!";
 			}
 			
 		}

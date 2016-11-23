@@ -1,10 +1,10 @@
+$(document).ready(function(){
+	$('td[name=tcol1]')
+	$('div[name=dv_commentaries').hide();
+})
 
-function clearContent(element)
+function showComments(id)
 {
-	element.value = "";
-}
-
-function addCommentary(index)
-{		
-	window.open("/templates/simple_blog_new_comment.php?postIndex="+ index +"");
+	window.alert(id);
+	$("#dv_comments"+id).show();
 }
