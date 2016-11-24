@@ -14,8 +14,9 @@ BASICS
 
 DATABASE
 - <del>Show posts in the main page</del>
-- Show commentaries related with each post
+- <del>Show commentaries related with each post</del>
+- <del>Show and hide each post´s commentaries</del>
 
 STYLE
-- Add social media links
+- <del>Add social media links</del>
 - Improve the visual part of the web

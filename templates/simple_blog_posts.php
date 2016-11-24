@@ -18,6 +18,8 @@
 	<link rel="stylesheet" type="text/css" href="includes\style.css">
 	<!-- Awesome font -->
 	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+	<!-- bootstrap.social -->
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-social/5.1.1/bootstrap-social.css">
 	<!-- OpenSans font -->
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet"> 
 	<!-- Javascript scripts -->
