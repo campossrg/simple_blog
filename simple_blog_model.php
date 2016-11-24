@@ -19,7 +19,7 @@
 	        	//social media share
 	        	echo "<br><div id='dv_social_media'>";
 	        	echo "<h3><i>Share</i></h3><ul>";
-		        echo "<li><a class='btn btn-facebook' href:'http://www.facebook.com/'><span class='fa fa-facebook'>facebook</span></a></li>";
+		        echo "<li><a class='btn btn-facebook' href:'https://www.facebook.com/sharer/sharer.php?u=".  ."'><span class='fa fa-facebook'>facebook</span></a></li>";
 		        echo "<li><a class='btn btn-twitter' href:'http://www.twitter.com/'><span class='fa fa-twitter'>Twitter</span></a></li>";
 		        echo "<li><a class='btn btn-google' href:'http://www.envelope.com/'><span class='fa fa-envelope'>Mail</span></a></li>";
 	        	echo "</ul>";

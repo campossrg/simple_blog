@@ -18,5 +18,6 @@ DATABASE
 - <del>Show and hide each post´s commentaries</del>
 
 STYLE
-- <del>Add social media links</del>
+- <del>Add social media buttons</del>
+- Add social media links (Change the view of posts: Review on main, full on each link)
 - Improve the visual part of the web
