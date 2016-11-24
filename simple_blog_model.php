@@ -9,31 +9,38 @@
     		if($btn)
 			{
 				//button show comments
-	        	echo "<input type='submit' class='btn btn-primary' value='Show comments' onclick='showComments(". $row['postIndex'] .")')>";
+	        	echo "<input type='submit' class='btn btn-primary' id='btn_show_comment' value='Show comments' onclick='showComments(". $row['postIndex'] .")')>";
 
 	        	//commentaries
-	        	//if(isset($_POST['btn_show_comment'. $row['postIndex']]))
-	        	//{
-		        	echo "<div name=dv_commentaries id=dv_comment". $row['postIndex'] .">";
-		        	$sql = "SELECT * FROM table_comments WHERE commentPostIndex = ". $row['postIndex'];
-		        	showComments($conn, $sql);
+	        	echo "<div name=dv_commentaries id=dv_comment". $row['postIndex'] .">";	
+	        	$sql = "SELECT * FROM table_comments WHERE commentPostIndex = ". $row['postIndex'];
+	        	showComments($conn, $sql);
 
-					//commentaries form
-		        	echo "<form action='simple_blog_index.php' method='POST'><br>";
-		        	echo "<div class='form-group'>";
-					echo "<h3><i>Add new commentary</i></h3>";
-					echo "<label for='Content'>Content</label>";
-		    		echo "<textarea class='form-control' name='txt_comment' cols='30' rows='5' placeholder='Insert text here...'></textarea>";
-	  				echo "</div>";
-	  				echo "<div class='form-group'>";
-					echo "<label for='Author'>Author</label>";
-					echo "<input type='text' class='form-control' name='txt_comment_author' placeholder='Enter Author'>";
-					echo "</div>";	
-	  				echo "<button type='submit' class='btn btn-primary' name='btn_comment_submit'>Submit</button>";
-	  				echo "</form>";
-		        	echo "</div>";
-	        	//}
+	        	//social media share
+	        	echo "<br><div id='dv_social_media'>";
+	        	echo "<h3><i>Share</i></h3><ul>";
+		        echo "<li><a class='btn btn-facebook' href:'http://www.facebook.com/'><span class='fa fa-facebook'>facebook</span></a></li>";
+		        echo "<li><a class='btn btn-twitter' href:'http://www.twitter.com/'><span class='fa fa-twitter'>Twitter</span></a></li>";
+		        echo "<li><a class='btn btn-envelope' href:'http://www.envelope.com/'><span class='fa fa-envelope'>Mail</span></a></li>";
+	        	echo "</ul>";
+	        	echo "</div>";
 
+				//commentaries form
+	        	echo "<form action='simple_blog_index.php' method='POST'><br>";
+	        	echo "<div class='form-group'>";
+				echo "<h3><i>Add new commentary</i></h3>";
+				echo "<label for='Content'>Content</label>";
+	    		echo "<textarea class='form-control' name='txt_comment' cols='30' rows='5' placeholder='Insert text here...'></textarea>";
+  				echo "</div>";
+  				echo "<div class='form-group'>";
+				echo "<label for='Author'>Author</label>";
+				echo "<input type='text' class='form-control' name='txt_comment_author' placeholder='Enter Author'>";
+				echo "</div>";	
+  				echo "<button type='submit' class='btn btn-primary' name='btn_comment_submit'>Submit</button>";
+  				echo "</form>";
+	        	echo "</div>";
+
+	        	//insert
 	        	if(isset($_POST['btn_comment_submit'])) 
 				{
 					$table = array("table_comments", "commentPostIndex", "commentText", "commentAuthor"); 

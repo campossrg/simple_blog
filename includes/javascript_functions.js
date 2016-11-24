@@ -1,10 +1,10 @@
 $(document).ready(function(){
-	$('td[name=tcol1]')
 	$('div[name=dv_commentaries').hide();
 })
 
 function showComments(id)
-{
-	window.alert(id);
-	$("#dv_comments"+id).show();
+{ 
+	$("#dv_comment"+id).toggle();
+	if($('#btn_show_comment').val() == "Show comments") $('#btn_show_comment').val("Hide comments");
+	else $('#btn_show_comment').val("Show comments");
 }

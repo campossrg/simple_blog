@@ -77,9 +77,12 @@ body
 	border: thin black solid;
 }
 
-.dv_commentaries_each
+ul
+{
+	list-style-type: none;
+}
+
+li
 {
 	float: left;
-	border: black thin solid;
-	width: 100%;
 }
