@@ -35,7 +35,7 @@
 			</div>
 			<div class="dv_navbar_links">
 				<a href=simple_blog_index.php>  Home  </a> 
-				<a href=templates/simple_blog_new_post.php target="_blank">  Create a new post  </a><br><br>				
+				<a id="a_new_post" href=templates/simple_blog_new_post.php target="_blank">  Create a new post  </a><br><br>				
 			</div>
 		</div>
 

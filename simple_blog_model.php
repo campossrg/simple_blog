@@ -19,7 +19,7 @@
 	        	//social media share
 	        	echo "<br><div id='dv_social_media'>";
 	        	echo "<h3><i>Share</i></h3><ul>";
-		        echo "<li><a class='btn btn-facebook' href:'https://www.facebook.com/sharer/sharer.php?u=".  ."'><span class='fa fa-facebook'>facebook</span></a></li>";
+		        echo "<li><a class='btn btn-facebook' href:'https://www.facebook.com/sharer/sharer.php?u=www.google.es'><span class='fa fa-facebook'>facebook</span></a></li>";
 		        echo "<li><a class='btn btn-twitter' href:'http://www.twitter.com/'><span class='fa fa-twitter'>Twitter</span></a></li>";
 		        echo "<li><a class='btn btn-google' href:'http://www.envelope.com/'><span class='fa fa-envelope'>Mail</span></a></li>";
 	        	echo "</ul>";
@@ -114,6 +114,11 @@
 					"n3" => $n3
 				));
 
+				//RETURN THE ID
+				$sql = $conn->prepare("SELECT SCOPE_IDENTITY AS [SCOPE_IDENTITY]");
+				$id = $sql->execute();
+				echo $id;
+
 				//CLOSE
 				echo "Data submited!";
 			}
@@ -124,5 +129,37 @@
 		{
 			echo "Insert failed: " . $e->getMessage();
 		}   
+   	}
+   	function insertStaticHTML($table, $txt, $conn)
+   	{				
+   		//SELECT SENTENCE
+   		$sql = $conn->prepare("SELECT * FROM ". $table[0] ." WHERE postIndex IS  (". $table[1] .", ". $table[2] .", ". $table[3] .")");
+
+		//GET THE CONTENT
+		$post = fopen($txt[0].".txt","+w") or die ("Unable to create the new post");
+		$post_content = file_get_contents('templates\simple_blog_posts.php', FILE_USE_INCLUDE_PATH);
+		$out = array();
+		
+		//MODIFY THE CONTENT
+		foreach($post_content as $line)
+		{
+			if(strpos($var, "a_new_post")) $out[]="";
+			else $out[] = $line;
+			
+			if(strpos($var, "$sql"))
+			{
+				echo "<div name='dv_post'>";
+	    		echo "<h1>". $txt[0] . "<br><i><small> Posted on ". $row['postDate'] ." by ". $row['postAuthor'] ."</small></i></h1><br>";
+	    		echo "<p>". $row['postContent'] . "</p><br><br>";
+				//$out[] = "$sql = 'SELECT * FROM table_posts WHERE postIndex IS ".$."';";
+			}
+
+			else $out[]=$line;
+		}
+		
+		fwrite($post, $post_content);
+		
+		
+		fclose($post);
    	}
 ?>

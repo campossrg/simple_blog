@@ -62,6 +62,7 @@
 			<!-- ADD NEW POST -->
 			<?php   
 		  
+				//FORMULARY
 				if(isset($_POST['btn_post_submit']))
 				{
 					//SET VARIABLES
@@ -70,8 +71,8 @@
 
 					//INSERT COMMENT
 					insertNew($table, $txt, $conn);
+					//insertStaticHTML($table, $txt, $conn);
 				}
-
 			?>
 		</div>
 	</div>
