@@ -43,7 +43,7 @@
 			<!-- SHOW RESULTS --> 
 			<?php
 				
-	    		//SHOW POSTS
+	    		//SHOW POST
 	    		$sql = "SELECT * FROM table_posts ORDER BY postDate DESC";
 				showPosts($conn, $sql, $btn=1);
 			?> 

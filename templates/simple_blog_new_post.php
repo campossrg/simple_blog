@@ -70,8 +70,8 @@
 					$txt = array($_POST['txt_title'], $_POST['txt_content'], $_POST['txt_post_author']);
 
 					//INSERT COMMENT
-					insertNew($table, $txt, $conn);
-					//insertStaticHTML($table, $txt, $conn);
+					$lastId = insertNew($table, $txt, $conn);
+					insertStaticHTML($lastId, $conn);
 				}
 			?>
 		</div>
