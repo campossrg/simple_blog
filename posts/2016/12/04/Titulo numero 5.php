@@ -15,8 +15,7 @@
 <html>
 <head>
 	<title>SIMPLE BLOG</title>
-	<link rel="stylesheet" type="text/css" href="includes\style.css">
-	<!-- Awesome font -->
+<link rel='stylesheet' type='text/css' href='..\..\..\..\includes\style.css'><br>	<!-- Awesome font -->
 	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 	<!-- bootstrap.social -->
 	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-social/5.1.1/bootstrap-social.css">
@@ -24,8 +23,7 @@
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet"> 
 	<!-- Javascript scripts -->
 	<script src="includes\JQuery_3.1.js"></script>
-	<script src="includes\javascript_functions.js"></script>
-</head>
+<script src='..\..\..\..\includes\javascript_functions.js'></script><br></head>
 <body>
     <div class="dv_main"> 
     	<!-- NAV BAR -->
@@ -34,13 +32,12 @@
 				<span>SIMPLE_BLOG</span>
 			</div>
 			<div class="dv_navbar_links">
-				<a href=simple_blog_index.php>  Home  </a> 
- 			</div>
+<a href=..\..\..\..\simple_blog_index.php>  Home  </a> 			</div>
 		</div>
 
 		<div class="dv_results">
 			<!-- SHOW RESULTS --> 
- <div name='dv_post125'><h1>Titulo numero 4<i><small> posted by sdfd on 2016-12-04 11:33:16</small></i></h1><p>dfssdf</p><br><br></div>  		</div>
+ <div name='dv_post141'><h1>Titulo numero 5<br><i><small> posted by sddgs on 2016-12-04 12:49:18</small></i></h1><p>adgfsdg</p><br><br></div>  		</div>
     </div>
 </body>
 </html>

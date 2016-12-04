@@ -16,6 +16,7 @@ DATABASE
 - <del>Show posts in the main page</del>
 - <del>Show commentaries related with each post</del>
 - <del>Show and hide each post´s commentaries</del>
+- <del>Open posts on full page</del>
 
 STYLE
 - <del>Add social media buttons</del>

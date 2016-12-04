@@ -3,7 +3,8 @@
    	{
 		foreach ($conn->query($sql) as $row){
 			echo "<div name='dv_post' id=dv_post". $row['postIndex'] .">";
-    		echo "<h1><a href='". $row['postTitle'] .".php' target='_blank'>". $row['postTitle'] . "</a><br><i><small> Posted on ". $row['postDate'] ." by ". $row['postAuthor'] ."</small></i></h1><br>";
+			$date_path = makePathDate($row['postDate']);
+    		echo "<h1><a href='". $date_path ."". $row['postTitle'] .".php' target='_blank'>". $row['postTitle'] . "</a><br><i><small> Posted on ". $row['postDate'] ." by ". $row['postAuthor'] ."</small></i></h1><br>";
     		echo "<p>". $row['postContent'] . "</p><br><br>";
 
     		if($btn)
@@ -127,23 +128,32 @@
    		$sql = "SELECT * FROM table_posts WHERE postIndex = '". $lastId ."'";
 		foreach($conn->query($sql) as $row)
 		{
+			//MAKE FOLDER-DATE
+			$path = "D:\\Program Files\\XAMPP\\htdocs";
+			$date_path = $path . makePathDate($row['postDate']);
+
 			//GET THE CONTENT
-			$path = "D:\\Program Files\\XAMPP\\htdocs\\";
-			$post = fopen($path . $row['postTitle'] .".php","w+") or die ("Unable to create the new post");
+			$post = fopen($date_path . $row['postTitle'] .".php","w+") or die ("Unable to create the new post");
 			$out = array();
-			$post_content = file($path . 'templates\simple_blog_posts.php');
+			$post_content = file($path . '..\templates\simple_blog_posts.php');
 			
 			//MODIFY THE CONTENT
 			foreach($post_content as $line)
 			{
-				if(strpos($line, "a_new_post")) $out[]=" ";
+				if(strpos($line, "style.css")) $out[]="<link rel='stylesheet' type='text/css' href='..\..\..\..\includes\style.css'><br>";
+
+				elseif(strpos($line, "javascript_functions.js")) $out[] = "<script src='..\..\..\..\includes\javascript_functions.js'></script><br>";
+
+				elseif(strpos($line, "simple_blog_index.php")) $out[] = "<a href=..\..\..\..\simple_blog_index.php>  Home  </a>";
+
+				elseif(strpos($line, "a_new_post")) $out[]=" ";
 				
 				elseif(strpos($line, "<?php")) $out[]=" ";
 
 				elseif(strpos($line, "SELECT"))
 				{
 					$out[] = "<div name='dv_post". $lastId ."'>";
-					$out[] = "<h1>". $row['postTitle'] ."<i><small> posted by ". $row['postAuthor'] ." on ". $row['postDate'] ."</small></i></h1>";
+					$out[] = "<h1>". $row['postTitle'] ."<br><i><small> posted by ". $row['postAuthor'] ." on ". $row['postDate'] ."</small></i></h1>";
 		    		$out[] = "<p>". $row['postContent'] . "</p><br><br>";
 		    		$out[] = "</div>";
 				}
@@ -161,5 +171,23 @@
 			fclose($post);
 			echo "Data submited!";
 		}
+	}
+
+	function makePathDate($date)
+	{
+			$path = "D:\\Program Files\\XAMPP\\htdocs";
+
+			$date = explode(" ", $date);
+			$date = $date[0];
+			$date = explode("-", $date);
+
+			$year = $date[0];
+			$month = $date[1];
+			$day = $date[2];
+
+			$date_path = "\\posts\\".$year."\\".$month."\\".$day."\\";
+			if(!file_exists($path.$date_path)) mkdir($path.$date_path, 0777, true);
+
+			return $date_path;
 	}
 ?>
