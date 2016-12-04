@@ -3,7 +3,7 @@
    	{
 		foreach ($conn->query($sql) as $row){
 			echo "<div name='dv_post' id=dv_post". $row['postIndex'] .">";
-			$date_path = makePathDate($row['postDate']);
+			$date_path = getPathDate($row['postDate']);
     		echo "<h1><a href='". $date_path ."". $row['postTitle'] .".php' target='_blank'>". $row['postTitle'] . "</a><br><i><small> Posted on ". $row['postDate'] ." by ". $row['postAuthor'] ."</small></i></h1><br>";
     		echo "<p>". $row['postContent'] . "</p><br><br>";
 
@@ -128,14 +128,13 @@
    		$sql = "SELECT * FROM table_posts WHERE postIndex = '". $lastId ."'";
 		foreach($conn->query($sql) as $row)
 		{
-			//MAKE FOLDER-DATE
-			$path = "D:\\Program Files\\XAMPP\\htdocs";
-			$date_path = $path . makePathDate($row['postDate']);
+			//SET FOLDER-DATE
+			$date_path = setPathDate($row['postDate']);
 
 			//GET THE CONTENT
 			$post = fopen($date_path . $row['postTitle'] .".php","w+") or die ("Unable to create the new post");
 			$out = array();
-			$post_content = file($path . '..\templates\simple_blog_posts.php');
+			$post_content = file('D:\\Program Files\\XAMPP\\htdocs\\templates\simple_blog_posts.php');
 			
 			//MODIFY THE CONTENT
 			foreach($post_content as $line)
@@ -173,21 +172,36 @@
 		}
 	}
 
-	function makePathDate($date)
+	function setPathDate($date)
 	{
-			$path = "D:\\Program Files\\XAMPP\\htdocs";
+		$path = "D:\\Program Files\\XAMPP\\htdocs\\posts\\";
 
-			$date = explode(" ", $date);
-			$date = $date[0];
-			$date = explode("-", $date);
+		$date = explode(" ", $date);
+		$date = $date[0];
+		$date = explode("-", $date);
 
-			$year = $date[0];
-			$month = $date[1];
-			$day = $date[2];
+		$year = $date[0];
+		$month = $date[1];
+		$day = $date[2];
 
-			$date_path = "\\posts\\".$year."\\".$month."\\".$day."\\";
-			if(!file_exists($path.$date_path)) mkdir($path.$date_path, 0777, true);
+		$date_path = $path.$year."\\".$month."\\".$day."\\";
+		if(!file_exists($date_path)) mkdir($date_path, 0777, true);
 
-			return $date_path;
+		return $date_path;
+	}
+
+	function getPathDate($date)
+	{
+		$date = explode(" ", $date);
+		$date = $date[0];
+		$date = explode("-", $date);
+
+		$year = $date[0];
+		$month = $date[1];
+		$day = $date[2];
+
+		$date_path = "\\posts\\".$year."\\".$month."\\".$day."\\";
+
+		return $date_path;
 	}
 ?>

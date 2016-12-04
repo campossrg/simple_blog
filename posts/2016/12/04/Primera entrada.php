@@ -37,7 +37,7 @@
 
 		<div class="dv_results">
 			<!-- SHOW RESULTS --> 
- <div name='dv_post141'><h1>Titulo numero 5<br><i><small> posted by sddgs on 2016-12-04 12:49:18</small></i></h1><p>adgfsdg</p><br><br></div>  		</div>
+ <div name='dv_post142'><h1>Primera entrada<br><i><small> posted by Sergio Campos on 2016-12-04 13:00:18</small></i></h1><p>loremipsum</p><br><br></div>  		</div>
     </div>
 </body>
 </html>
