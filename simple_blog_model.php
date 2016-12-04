@@ -3,7 +3,7 @@
    	{
 		foreach ($conn->query($sql) as $row){
 			echo "<div name='dv_post' id=dv_post". $row['postIndex'] .">";
-    		echo "<h1>". $row['postTitle'] . "<br><i><small> Posted on ". $row['postDate'] ." by ". $row['postAuthor'] ."</small></i></h1><br>";
+    		echo "<h1><a href='". $row['postTitle'] .".php' target='_blank'>". $row['postTitle'] . "</a><br><i><small> Posted on ". $row['postDate'] ." by ". $row['postAuthor'] ."</small></i></h1><br>";
     		echo "<p>". $row['postContent'] . "</p><br><br>";
 
     		if($btn)
@@ -78,8 +78,6 @@
 		//EXECUTE WITH VALUES
 		try
 		{
-			//BASIC VALIDATION
-
 			if(empty($txt[0]))
 			{
 				$error[] = "The title is not completed!!";
@@ -103,7 +101,6 @@
 
 			else
 			{
-				//EXECUTE
 				$sql->execute(array(
 					"n1" => $txt[0],
 					"n2" => $txt[1],
@@ -114,7 +111,6 @@
 				$id = $conn->lastInsertId();
 				return $id;
 
-				//CLOSE
 				echo "Data submited!";
 			}
 			
@@ -125,50 +121,45 @@
 			echo "Insert failed: " . $e->getMessage();
 		}   
    	}
+
    	function insertStaticHTML($lastId, $conn)
    	{		
-   		//SQL SENTENCE
    		$sql = "SELECT * FROM table_posts WHERE postIndex = '". $lastId ."'";
 		foreach($conn->query($sql) as $row)
 		{
 			//GET THE CONTENT
 			$path = "D:\\Program Files\\XAMPP\\htdocs\\";
-			$post = fopen($path . $row['postTitle'] .".txt","w+") or die ("Unable to create the new post");
-			$post_content = file_get_contents($path . 'templates\simple_blog_posts.php', FILE_USE_INCLUDE_PATH);
-			foreach ($post_content as $line) {
-				echo $line;
-			}
+			$post = fopen($path . $row['postTitle'] .".php","w+") or die ("Unable to create the new post");
 			$out = array();
+			$post_content = file($path . 'templates\simple_blog_posts.php');
 			
 			//MODIFY THE CONTENT
 			foreach($post_content as $line)
 			{
-				//DELETE SQL LINE
-				if(strpos($var, "a_new_post")) $out[]="";
-				else $out[] = $line;
+				if(strpos($line, "a_new_post")) $out[]=" ";
 				
-				//ADD POST
-				if(strpos($var, "$sql"))
+				elseif(strpos($line, "<?php")) $out[]=" ";
+
+				elseif(strpos($line, "SELECT"))
 				{
 					$out[] = "<div name='dv_post". $lastId ."'>";
 					$out[] = "<h1>". $row['postTitle'] ."<i><small> posted by ". $row['postAuthor'] ." on ". $row['postDate'] ."</small></i></h1>";
 		    		$out[] = "<p>". $row['postContent'] . "</p><br><br>";
 		    		$out[] = "</div>";
 				}
+
+				elseif(strpos($line, "sql")) $out[]=" ";
+
+				elseif(strpos($line, "?>")) $out[]=" ";
+
 				else $out[] = $line;
-
-				//DELETE SHOWPOSTS LINE
-				if(strpos($var, "showPosts()")) $out[]="";
-				else $out[] = $line; 
 			}
+
+			//PRINT THE CONTENT
 			foreach($out as $line) fwrite($post, $line);
-
-			foreach ($post as $line)
-			{
-				echo $line;
-			}
 			
 			fclose($post);
+			echo "Data submited!";
 		}
 	}
 ?>

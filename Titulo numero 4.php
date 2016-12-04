@@ -35,17 +35,12 @@
 			</div>
 			<div class="dv_navbar_links">
 				<a href=simple_blog_index.php>  Home  </a> 
-				<a id="a_new_post" href=templates/simple_blog_new_post.php target="_blank">  Create a new post  </a><br><br>				
-			</div>
+ 			</div>
 		</div>
 
 		<div class="dv_results">
 			<!-- SHOW RESULTS --> 
-			<?php
-				$sql = "SELECT * FROM table_posts ORDER BY postDate DESC";
-				showPosts($conn, $sql, $btn=1);
-			?> 
-		</div>
+ <div name='dv_post125'><h1>Titulo numero 4<i><small> posted by sdfd on 2016-12-04 11:33:16</small></i></h1><p>dfssdf</p><br><br></div>  		</div>
     </div>
 </body>
 </html>
