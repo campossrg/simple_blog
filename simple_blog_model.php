@@ -20,9 +20,9 @@
 	        	//social media share
 	        	echo "<br><div id='dv_social_media'>";
 	        	echo "<h3><i>Share</i></h3><ul>";
-		        echo "<li><a class='btn btn-facebook' href:'https://www.facebook.com/sharer/sharer.php?u=www.google.es'><span class='fa fa-facebook'>facebook</span></a></li>";
-		        echo "<li><a class='btn btn-twitter' href:'http://www.twitter.com/'><span class='fa fa-twitter'>Twitter</span></a></li>";
-		        echo "<li><a class='btn btn-google' href:'http://www.envelope.com/'><span class='fa fa-envelope'>Mail</span></a></li>";
+		        echo "<li><a class='btn btn-facebook' href='https://www.facebook.com/sharer/sharer.php?u=www.google.es'><span class='fa fa-facebook'>facebook</span></a></li>";
+		        echo "<li><a class='btn btn-twitter' href='http://www.twitter.com/'><span class='fa fa-twitter'>Twitter</span></a></li>";
+		        echo "<li><a class='btn btn-google' href='http://www.envelope.com/'><span class='fa fa-envelope'>Mail</span></a></li>";
 	        	echo "</ul>";
 	        	echo "</div>";
 
@@ -48,6 +48,7 @@
 					$txt = array($row['postIndex'], $_POST['txt_comment'], $_POST['txt_comment_author']);
 
 					insertNew($table, $txt, $conn);
+					header("Refresh:0");
 				}
 			}
     		echo "</div>";
@@ -169,6 +170,7 @@
 			
 			fclose($post);
 			echo "Data submited!";
+			echo "<script>window.close();</script>";
 		}
 	}
 

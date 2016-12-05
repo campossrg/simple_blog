@@ -20,5 +20,5 @@ DATABASE
 
 STYLE
 - <del>Add social media buttons</del>
-- Add social media links (Change the view of posts: Review on main, full on each link)
-- Improve the visual part of the web
+- <del>Add social media links (Change the view of posts: Review on main, full on each link)</del>
+- Improve the visual part of the web (Show comments)
