@@ -10,10 +10,10 @@
     		if($btn)
 			{
 				//button show comments
-	        	echo "<input type='submit' class='btn btn-primary' id='btn_show_comment' value='Show comments' onclick='showComments(". $row['postIndex'] .")')>";
+	        	echo "<input type='submit' class='btn btn-primary' id='btn_show_comment". $row['postIndex'] ."' value='Show comments' onclick='showComments(". $row['postIndex'] .")')>";
 
 	        	//commentaries
-	        	echo "<div name=dv_commentaries id=dv_comment". $row['postIndex'] .">";	
+	        	echo "<div name=dv_commentaries id='dv_comment". $row['postIndex'] ."'>";	
 	        	$sql = "SELECT * FROM table_comments WHERE commentPostIndex = ". $row['postIndex'];
 	        	showComments($conn, $sql);
 
@@ -31,11 +31,11 @@
 	        	echo "<div class='form-group'>";
 				echo "<h3><i>Add new commentary</i></h3>";
 				echo "<label for='Content'>Content</label>";
-	    		echo "<textarea class='form-control' name='txt_comment' cols='30' rows='5' placeholder='Insert text here...'></textarea>";
+	    		echo "<textarea class='form-control' name='txt_comment' cols='30' rows='5' placeholder='Insert text here...' style='width:500px'></textarea>";
   				echo "</div>";
   				echo "<div class='form-group'>";
 				echo "<label for='Author'>Author</label>";
-				echo "<input type='text' class='form-control' name='txt_comment_author' placeholder='Enter Author'>";
+				echo "<input type='text' class='form-control' name='txt_comment_author' placeholder='Enter Author' style='width:200px'>";
 				echo "</div>";	
   				echo "<button type='submit' class='btn btn-primary' name='btn_comment_submit'>Submit</button>";
   				echo "</form>";
@@ -144,7 +144,7 @@
 
 				elseif(strpos($line, "javascript_functions.js")) $out[] = "<script src='..\..\..\..\includes\javascript_functions.js'></script><br>";
 
-				elseif(strpos($line, "simple_blog_index.php")) $out[] = "<a href=..\..\..\..\simple_blog_index.php>  Home  </a>";
+				elseif(strpos($line, "simple_blog_index.php")) $out[] = " ";
 
 				elseif(strpos($line, "a_new_post")) $out[]=" ";
 				

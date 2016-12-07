@@ -5,6 +5,6 @@ $(document).ready(function(){
 function showComments(id)
 { 
 	$("#dv_comment"+id).toggle();
-	if($('#btn_show_comment').val() == "Show comments") $('#btn_show_comment').val("Hide comments");
-	else $('#btn_show_comment').val("Show comments");
+	if($('#btn_show_comment'+id).val() == "Show comments") $('#btn_show_comment'+id).val("Hide comments");
+	else $('#btn_show_comment'+id).val("Show comments");
 }

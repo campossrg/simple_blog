@@ -46,15 +46,15 @@
 			<form action="simple_blog_new_post.php" method="POST"><br>
 				<div class='form-group'>
 					<label for='Title'>Title</label>
-					<input type='text' class='form-control' name='txt_title' placeholder='Enter Title'>
+					<input type='text' class='form-control' name='txt_title' placeholder='Enter Title' style="width:400px">
 				</div>	
 	        	<div class='form-group'>
 					<label for='Content'>Content</label>
-		    		<textarea class='form-control' name='txt_content' cols='30' rows='5' placeholder='Insert text here...'></textarea>
+		    		<textarea class='form-control' name='txt_content' cols='30' rows='5' placeholder='Insert text here...' style="width:600px"></textarea>
 				</div>
 				<div class='form-group'>
 					<label for='Author'>Author</label>
-					<input type='text' class='form-control' name='txt_post_author' placeholder='Enter Author'>
+					<input type='text' class='form-control' name='txt_post_author' placeholder='Enter Author' style="width:200px">
 				</div>	
   				<button type='submit' class='btn btn-primary' name='btn_post_submit'>Submit</button>
 			</form>

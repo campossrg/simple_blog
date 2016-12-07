@@ -63,14 +63,17 @@ body
 [name=dv_commentaries]
 {
 	float: left;
-	width: 45%;
+	width: 70%;
 	height: 100%;
 	margin-left: 20%;
-
 }
 
 [name=dv_post]
 {
+	
+	float: left;
+	width: 100%;
+	height: 100%;
 }
 
 ul
